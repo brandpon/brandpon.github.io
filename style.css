@@ -1,0 +1,25 @@
+/* body {
+	background-color: lightblue;
+} */
+
+#leftdiv {
+	display: block;
+	float: left;
+}
+
+#rightdiv {
+	display: block;
+  float: right;
+}
+
+button {
+    display: block;
+}
+
+select {
+    display: block;
+}
+
+div {
+  word-wrap: break-word;
+}

@@ -1,13 +1,43 @@
-# brandpon.github.io
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="script.js"></script>
+	<script src="https://unpkg.com/tinyqueue@2.0.0/tinyqueue.min.js"></script>
+	<title>Search Algorithm Visualizer</title>
 </head>
 
 <body>
-	Test
+	<div id="leftdiv">
+		<canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
+	</div>
+
+	<div id="rightdiv">
+		<label for="selectAlgorithm">Search Algorithm:</label>
+		<select id="algorithmsDropDown" onChange="updateDropDownValue()">
+			<option value="0">BFS</option>
+			<option value="1">DFS</option>
+			<option value="2">Dijkstra</option>
+			<option value="3">A*</option>
+			<option value="4">Best-First</option>
+		</select>
+
+			<button id="startButton" type="button" onclick="startSearch()"> Start </button>
+			<button type="button" onclick="resetAlgorithm()"> Reset Path </button>
+			<button type="button" onclick="resetAll()"> Reset All </button>
+
+			<p>Click and drag to block cells.</p>
+			<p>White cells are unvisited.</p>
+			<p>Green cells have been visited</p>
+			<p>Blue cells are queued to be visited.</p>
+
+
+
+	</div>
+
 </body>
 
 </html>
