@@ -61,7 +61,7 @@ class Square {
 window.onload = function() {
   canvas = document.getElementById("myCanvas");
   canvas.width =
-    Math.floor((window.innerWidth * 0.9) / squareSize) * squareSize;
+    Math.floor((window.innerWidth * 0.8) / squareSize) * squareSize;
   canvas.height = Math.floor(window.innerHeight / squareSize) * squareSize;
   context = canvas.getContext("2d");
 
