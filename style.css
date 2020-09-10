@@ -10,6 +10,7 @@
 #rightdiv {
 	display: block;
   float: right;
+	min-width: 300px;
 }
 
 button {

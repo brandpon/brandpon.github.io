@@ -11,32 +11,36 @@
 </head>
 
 <body>
-	<div id="leftdiv">
-		<canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
+	<div id="main">
+		<div id="leftdiv">
+			<canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
+		</div>
+
+		<div id="rightdiv">
+			<label for="selectAlgorithm">Search Algorithm:</label>
+			<select id="algorithmsDropDown" onChange="updateDropDownValue()">
+				<option value="0">BFS</option>
+				<option value="1">DFS</option>
+				<option value="2">Dijkstra</option>
+				<option value="3">A*</option>
+				<option value="4">Best-First</option>
+			</select>
+
+				<button id="startButton" type="button" onclick="startSearch()"> Start </button>
+				<button type="button" onclick="resetAlgorithm()"> Reset Path </button>
+				<button type="button" onclick="resetAll()"> Reset All </button>
+				<input type="checkbox" id="animation_check" onclick="setAnimations()" checked> Animations </input>
+
+				<p>Click and drag empty cells to draw walls</p>
+				<p>Click and drag walls to revert to empty cells.</p>
+				<p>White cells are unvisited.</p>
+				<p>Green cells have been visited</p>
+				<p>Blue cells are queued to be visited.</p>
+				<p id="cells_checked">Cells checked: </p>
+				<p id="path_length">Length of path: </p>
+		</div>
 	</div>
 
-	<div id="rightdiv">
-		<label for="selectAlgorithm">Search Algorithm:</label>
-		<select id="algorithmsDropDown" onChange="updateDropDownValue()">
-			<option value="0">BFS</option>
-			<option value="1">DFS</option>
-			<option value="2">Dijkstra</option>
-			<option value="3">A*</option>
-			<option value="4">Best-First</option>
-		</select>
-
-			<button id="startButton" type="button" onclick="startSearch()"> Start </button>
-			<button type="button" onclick="resetAlgorithm()"> Reset Path </button>
-			<button type="button" onclick="resetAll()"> Reset All </button>
-
-			<p>Click and drag to block cells.</p>
-			<p>White cells are unvisited.</p>
-			<p>Green cells have been visited</p>
-			<p>Blue cells are queued to be visited.</p>
-
-
-
-	</div>
 
 </body>
 

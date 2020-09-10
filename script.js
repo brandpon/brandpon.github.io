@@ -14,6 +14,7 @@ let delay = 5;
 let stop = true;
 let dropdownvalue = 0;
 let iterations = 0;
+let animations;
 const squareSize = 25;
 const white = "#FFFFFF";
 const black = "#000000";
@@ -60,9 +61,8 @@ class Square {
 
 window.onload = function() {
   canvas = document.getElementById("myCanvas");
-  canvas.width =
-    Math.floor((window.innerWidth * 0.9) / squareSize) * squareSize;
-  canvas.height = Math.floor(window.innerHeight / squareSize) * squareSize;
+  canvas.width = Math.min(Math.floor((window.innerWidth * 0.9) / squareSize) * squareSize, Math.floor((window.innerWidth - 325) / squareSize) * squareSize);
+  canvas.height = Math.floor((window.innerHeight-10) / squareSize) * squareSize;
   context = canvas.getContext("2d");
 
   canvas.addEventListener("contextmenu", rightclickHandler, false);
@@ -71,6 +71,7 @@ window.onload = function() {
   gridWidth = Math.floor(canvas.width / squareSize);
   gridHeight = Math.floor(canvas.height / squareSize);
 
+  setAnimations();
   createGrid();
   drawAll();
 };
@@ -254,7 +255,10 @@ function drawPath(v) {
     length++;
   }
 
-  console.log("Iterations: " + iterations + ", length: " + length);
+  let cells_checked = document.getElementById('cells_checked');
+  let path_length = document.getElementById('path_length');
+  cells_checked.innerHTML = "Cells checked: " + iterations;
+  path_length.innerHTML = "Length of path: " + length;
   enableEventListeners();
 }
 
@@ -318,6 +322,10 @@ function resetAll() {
 
 }
 
+function setAnimations(){
+  animations = document.getElementById("animation_check").checked;
+}
+
 // Used to delay animation frames
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -371,7 +379,9 @@ async function bfs_dfs_search(start, end, option) {
 
     getAndMarkNeighbours(v, queue, discovered);
     iterations++;
-    await sleep(delay);
+    if (animations){
+      await sleep(delay);
+    }
   }
 }
 
@@ -410,7 +420,9 @@ async function Dijkstra(start, end) {
       }
     }
     iterations++;
-    await sleep(delay);
+    if (animations){
+      await sleep(delay);
+    }
   }
 }
 
@@ -486,7 +498,9 @@ async function A_Star(start, end) {
       drawSquare(successor.index, blue);
     }
     iterations++;
-    await sleep(delay);
+    if (animations){
+      await sleep(delay);
+    }
   }
 }
 
@@ -510,8 +524,9 @@ async function Best_First(start, end) {
 
     getAndMarkNeighbours(q, queue, discovered);
     iterations++;
-    await sleep(delay);
-
+    if (animations){
+      await sleep(delay);
+    }
   }
 
 }
